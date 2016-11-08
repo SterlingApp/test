@@ -1,0 +1,39 @@
+<ion-header-bar class="headerborder" >
+	<div class=" home-head2 " ng-click="goback();">
+		<i class="ion ion-arrow-left-c back-icon"></i>
+    </div>
+    <div class="home-head2">
+		<p  class="headertitle">Account Information</p>
+	</div>
+</ion-header-bar>
+<ion-view>
+    <ion-content class="bgnew">
+		<div class="card">
+			<div class="item itemleft item-avatar">
+				<img src="img/item/Account-number.png" class="item-Image">
+				<div class="ItemlineHead cardContent">Account Number</div>
+				<div class="ItemlineValueText cardContent">{{account_information.ACC_NUM}}</div>
+			</div>
+			<div class="item item-avatar itemleft">
+				<img src="img/item/plan.png" class="item-Image">
+				<div class="ItemlineHead cardContent">Plan</div>
+				<div class="ItemlineValueText cardContent">{{account_information.PLAN_NAME}}</div>
+			</div>
+			<div class="item item-avatar itemleft">
+				<img src="img/item/dateicon.png" class="item-Image">
+				<div class="ItemlineHead cardContent">COBRA Effective Date</div>
+				<div class="ItemlineValueText cardContent">{{account_information.EFFECTIVE_DATE}}</div>
+			</div>
+			<div class="item item-avatar itemleft">
+				<img src="img/item/Allowable-contributions.png" class="item-Image">
+				<div class="ItemlineHead cardContent">Account Status</div>
+				<div class="ItemlineValueText cardContent">{{account_information.ACCOUNT_STATUS}}</div>
+			</div>
+			<div class="item item-avatar itemleft">
+				<img src="img/item/account_balance.png" class="item-Image">
+				<div class="ItemlineHead cardContent">Total Payments</div>
+				<div class="ItemlineValueText cardContent">{{account_information.CONTRIBUTION | currency}}</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

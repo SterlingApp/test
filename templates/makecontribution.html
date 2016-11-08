@@ -1,0 +1,123 @@
+<ion-header-bar class="headerborder"> 
+	<div class="home-head2 " ng-click="goback();">
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon" ></i>
+	</div>
+	<div class="home-head2">
+		<p  class="headertitle">Make Contribution</p>
+	</div>
+</ion-header-bar>
+
+<ion-view>
+	<ion-content class="bgnew">
+		<div class="card">
+			<div class="item item-avatar itemleft  item-text-wrap ItemLinehr ">
+				<img src="img/item/Total-contribution.png" class="item-Image1">
+				<div class="ItemlineHead cardContent">Total Contributions for 2016</div>
+
+				<div class="ItemlineValueText cardContent">{{total_contribution.CURRENT_YR_CONTRB| currency}}</div>
+			</div>
+			<div class="item item-avatar itemleft item-text-wrap">
+				<img src="img/item/Allowable-contributions.png" class="item-Image1">
+				<div class="ItemlineHead cardContent">Allowable Contributions Remaining for 2016</div>
+				<div class="ItemlineValueText cardContent">{{total_contribution.CONTRB_LIMIT  | currency}}</div>
+			</div>
+
+			<div class="item item-avatar itemleft item-text-wrap">
+				<img src="img/item/Total-disburesment.png" class="item-Image1">
+				<div class="ItemlineHead cardContent">Total Disbursement for 2016</div>
+				<div class="ItemlineValueText cardContent">{{total_contribution.TOTAL_DISB_AMOUNT | currency}}</div>
+			</div>
+		</div>
+
+
+		<form name="myForm">
+			<div class="row responsive-sm">
+				<div class="col col-75 center">
+					<div class="list ">
+						<p class="ItemlineHead1 Select-Float" ng-show="floatlabel">Select Bank Account</p>
+						<label class="item item-input item-select formselect bgnew" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid ,'no-errors' :myForm.selectAccount.$valid }" >
+							<div class="input-label ItemlineHead1">
+							select
+							</div>
+							<select class="bgnew" name="selectAccount" ng-model="makecontribute.selectAccount" ng-change="SelectFloat()" required>
+							<option value="" > Select Bank Account</option>
+							<option ng-repeat="data in bank_details">{{data.DISPLAY_NAME}}</option>
+
+							</select>
+						</label>
+						
+						<div class="row">
+							<span style="color:red" ng-show="myForm.selectAccount.$dirty && myForm.selectAccount.$invalid">
+							<span ng-show="myForm.selectAccount.$error.required">  Bank Account is required.</span>
+							</span>
+						</div>
+
+						<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.amount.$dirty && myForm.amount.$invalid ,'no-errors' :myForm.amount.$valid   }" >
+							<span class="input-label ItemlineHead1">
+							Enter Amount
+							</span>
+							<input type="number"  class="input-box1 input-boxfocus1" name="amount" ng-model="makecontribute.amount" ng-pattern='\\d+' id="forminput" placeholder="Enter Amount" required>
+						</label> 
+						
+						<div class="row">
+							<p style="color:Red" ng-show=" myForm.amount.$error.number">Please Enter Number's Only.</p>
+							<span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
+							<span ng-show="myForm.amount.$error.required"> Amount is required.</span>
+							</span>
+						</div>
+
+						<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.feeamount.$dirty && myForm.feeamount.$invalid ,'no-errors' :myForm.feeamount.$valid   }">
+							<span class="input-label ItemlineHead1">
+							Enter Fee Amount
+							</span>
+
+							<input type="number"   name="feeamount" ng-model="makecontribute.feeamount" ng-pattern='\\d+' id="forminput" placeholder="Optional Fee Amount($)" required>
+						</label> 
+						
+						<div class="row">
+							<p style="color:Red" ng-show=" myForm.feeamount.$error.number">Please Enter Number's Only.</p>
+		                       <span style="color:red" ng-show="myForm.feeamount.$dirty && myForm.feeamount.$invalid">
+                                <span ng-show="myForm.feeamount.$error.required"> Fee Amount is required.</span>
+                              </span>
+						</div>
+						 
+						<label class="item item-input item-floating-label formselect"  ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid ,'no-errors':myForm.transaction.$valid }">
+						 <span class="input-label ItemlineHead1 ">
+						   Enter Transaction
+						   </span>
+						 <input type="text"  ng-focus="getTransDate()" name="transaction" ng-model="makecontribute.TransDate" class="bgnew" id="forminput " placeholder="Transaction Date" ng-readonly="true" required>
+		                </label>
+							
+						<div class="row">
+						  <span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid">
+							<span ng-show="myForm.transaction.$error.required"> Transaction Date is required.</span>
+						  </span>
+						</div>
+												
+						<p class=" ItemlineHead1 Select-Float" ng-show="floatlabel1">Select Description</p>
+						<label class="item item-input item-select formselect bgnew" ng-class="{ 'has-errors' :myForm.selectdescription.$dirty && myForm.selectdescription.$invalid ,'no-errors' :myForm.selectdescription.$valid }" >
+							<span class="input-label">
+							Description
+							</span>
+							<select class="bgnew" name="selectdescription" ng-model="makecontribute.selectdescription" ng-change="SelectFloat1()" required>
+								<option value="" > Select Description</option>
+								<option ng-repeat="data in description">{{data.FEE_NAME}}</option>
+							</select>
+						</label>
+						
+						<div class="row">
+							<span style="color:red" ng-show="myForm.selectdescription.$dirty && myForm.selectdescription.$invalid">
+							<span ng-show="myForm.selectdescription.$error.required"> Description is required.</span>
+							</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col  text-center">
+							<button class="button button-calm button-small formButton1" type="submit" ng-click="submitvalues();myForm.$setPristine()" ng-disabled="myForm.$invalid || myForm.feeamount.$invalid" style="background-color:#29B8E5;color:#fff;border-radius:8px;">SUBMIT</button>
+						</div> 
+					</div> 
+				</div>
+			</div>
+		</form>	
+	</ion-content>
+</ion-view>

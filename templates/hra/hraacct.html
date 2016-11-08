@@ -1,0 +1,26 @@
+<ion-header-bar id="headerborder" class="headerborder" >	
+	<div class="home-head2 " ng-click="goback();">
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+	</div>
+	<div class="home-head2 ">
+		<p class="headertitle">HRA Account Information</p>
+	</div> 
+</ion-header-bar>
+
+<ion-view>
+    <ion-content scroll="false" class="bgnew">
+		<div class="card" >
+				<div class="item itemleft item-avatar ">
+					<img src="img/item/dateicon.png">
+					<div class="ItemlineHead cardContent">HRA Effective Date</div>
+					<div class="ItemlineValueText cardContent">{{accnumber.EFFECTIVE_DATE}}</div>
+				</div>
+				
+				<div class="item itemleft item-avatar">
+					<img src="img/item/Account-number.png">
+					<div class="ItemlineHead cardContent">Account Number</div>
+					<div class="ItemlineValueText cardContent">{{accnumber.ACC_NUM}}</div>
+				</div>	
+		</div>
+  </ion-content>
+</ion-view>

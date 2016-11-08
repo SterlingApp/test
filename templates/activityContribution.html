@@ -1,0 +1,32 @@
+<ion-header-bar id="headerborder" class="headerborder" >
+	<div class="home-head2 " ng-click="goback();">
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+	</div>
+	<div class="home-head2 ">
+		<p class="headertitle">Contribution Activity</p>
+	</div>
+</ion-header-bar>
+ <style>  
+    .div{
+      text-align: center;
+      padding: 25px;
+    }
+  </style>
+<ion-view>
+	<ion-content scroll="false" class="bgnew">  
+		<div class="div newTop">
+			<a href="#/scheduledcontribute" menu-close >
+			<img src="img/home/Scheduled_contributions.svg" style="height: 100px; width: 100px;">
+			<p class="home-head">Scheduled Contributions</p>
+			</a>
+		</div>
+		<div class="div">
+			<a href="#/recent">
+			<img src="img/home/Last5contributions.svg" style="height: 100px; width: 100px;">
+			<p class="home-head">Last Five Contributions</p>
+			</a> 
+		</div>
+		<!--the below code used for Scrolling -->
+		<div style="height: 150px;"></div>
+	</ion-content>
+</ion-view>

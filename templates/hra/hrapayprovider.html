@@ -1,0 +1,20 @@
+<ion-header-bar id="headerborder" class="headerborder" >
+	<div class="home-head2" ng-click="goback();">
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+    </div>
+    <div class="home-head2">
+		<p class="headertitle">HRA New Claim Request</p>
+	</div>
+</ion-header-bar>
+<ion-view>
+    <ion-content class="bgnew">
+		<div class="padding">
+			<div class="list" ng-repeat="data in plan_types">
+				<a class="item shadow item-avatar" ng-click="getClaimData(data)">
+					<img src="img/home/{{data.LOOKUP_CODE}}.svg">
+					<div class="home-head claim-menu-head">{{data.MEANING}}</div>
+				</a>
+			</div>
+		</div>
+    </ion-content>
+</ion-view>

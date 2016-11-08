@@ -1,0 +1,143 @@
+<ion-header-bar class="headerborder" >
+	<div class="home-head2 " ng-click="goback();">
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+    </div>
+    <div class="home-head2 ">
+		<p class="headertitle">{{newclaim_plantype}}</p>
+	</div>
+</ion-header-bar>
+<ion-view>
+	<ion-content class="bgnew">
+				<form name="myForm">
+					<div class="row responsive-sm">
+						<div class="col col-75 center">
+							<div class="card">
+								<div class="item item-avatar">
+								<img src="img/item/account_balance.png">
+								<div class="ItemlineHead cardContent">Account Balance</div>
+								<div class="ItemlineValueText cardContent">{{newclaim_balance| currency}}</div>
+								</div>
+							</div>
+
+							<div class="list">
+								<p class=" ItemlineHead1 Select-Float" ng-show="floatlabel">Select Bank Account</p>
+								<label class="item item-input item-select formselect bgnew "  ng-class="{ 'has-errors' :myForm.Bankaccount.$dirty && myForm.Bankaccount.$invalid,'no-errors' :myForm.Bankaccount.$valid }">
+									<span class="input-label bgnew">
+										select
+									</span>
+									<select class="bgnew" name="Bankaccount" ng-model="newclaimvalues.Bankaccount" ng-options="pay.DISPLAY_NAME for pay in bank_details" ng-change="SelectFloat()" required>
+										<option selected disabled value="" class="ItemlineHead1"> Select Bank Account</option>
+									</select>
+								</label>
+								<div class="row">
+									<span style="color:red" ng-show="myForm.Bankaccount.$dirty && myForm.Bankaccount.$invalid">
+										<span ng-show="myForm.Bankaccount.$error.required"> Bank Account is required.</span>
+									</span>
+								</div>				 
+
+								<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.amount.$dirty && myForm.amount.$invalid ,'no-errors' :myForm.amount.$valid   }">
+									<span class="input-label ItemlineHead1">Enter Amount</span>
+									<input type="number"  class="input-box1 input-boxfocus1 formselect" id="forminput" name="amount" ng-model="newclaimvalues.amount" placeholder="Enter Amount"  required>
+								</label>
+								
+								<div class="row">
+									<span style="color:red" ng-show="myForm.amount.$dirty && myForm.amount.$invalid">
+										<span ng-show="myForm.amount.$error.required"> Amount is required.</span>
+										<p style="color:Red" ng-show=" myForm.amount.$error.number">Please Enter Number's Only.</p>
+									</span>
+								</div>
+
+								<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.startTransDate.$dirty && myForm.startTransDate.$invalid ,'no-errors' :myForm.startTransDate.$valid   }">
+									<span class="input-label ItemlineHead1">Enter Start Transaction Date</span>
+									<input type="text" ng-click="getTransDate()" name="startTransDate" ng-model="newclaimvalues.startTransDate"  id="forminput"  placeholder="Enter Start Transaction Date" class="bgnew" ng-readonly="true" required>
+								</label>
+								<div class="row">
+									<span style="color:red" ng-show="myForm.endTransDate.$dirty && myForm.startTransDate.$invalid">
+										<span ng-show="myForm.startTransDate.$error.required"> Start Transaction Date is required.</span>
+									</span>
+								</div>
+
+								<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.endTransDate.$dirty && myForm.endTransDate.$invalid ,'no-errors' :myForm.endTransDate.$valid   }">
+									<span class="input-label ItemlineHead1">Enter End Transaction Date</span>
+									<input type="text" ng-click="EndgetTransDate()" name="endTransDate" ng-model="newclaimvalues.endTransDate"  id="forminput" placeholder="Enter End Transaction Date" class="bgnew" ng-readonly="true" required>
+								</label>
+								<div class="row">
+									<span style="color:red" ng-show="myForm.endTransDate.$dirty && myForm.endTransDate.$invalid">
+										<span ng-show="myForm.endTransDate.$error.required">End  Transaction Date is required.</span>
+									</span>
+								</div>
+
+								<label class="item item-input item-floating-label formselect" ng-class="{ 'has-errors' :myForm.description.$dirty && myForm.description.$invalid ,'no-errors' :myForm.description.$valid   }">
+									<span class="input-label ItemlineHead1">Enter Description</span>
+									<input type="text"  class="input-box input-boxfocus formselect" id="forminput" name="description"  ng-pattern="/^[a-zA-Z0-9 .,\w -]*$/"  ng-model="newclaimvalues.description" placeholder="Enter Description"  required>
+								</label> 
+								<div class="row">
+									<span style="color:red" ng-show="myForm.description.$dirty && myForm.description.$invalid">
+										<span ng-show="myForm.description.$error.required"> Description is required.</span>
+										<p style="color:red" ng-show="myForm.description.$error.pattern"> Please Enter Text.</p>
+									</span>
+								</div>
+
+								<label class="item item-input item-floating-label formselect" ng-if="patientname" ng-class="{ 'has-errors' :myForm.patient.$dirty && myForm.patient.$invalid ,'no-errors' :myForm.patient.$valid   }">
+									<span class="input-label ItemlineHead1">Enter Patient's Name</span>
+									<input type="text"  class="input-box input-boxfocus formselect" id="forminput" name="patient"  ng-pattern="/^[a-zA-Z\w -]*$/"  ng-model="newclaimvalues.patient" placeholder="Enter Patient's Name"  required>
+								</label> 
+								<div class="row">
+								<span style="color:red" ng-show="myForm.patient.$dirty && myForm.patient.$invalid">
+									<span ng-show="myForm.patient.$error.required"> Patient's Name is required.</span>
+									<p style="color:red" ng-show="myForm.patient.$error.pattern"> Please Enter Text.</p>
+								</span>
+								</div>
+
+								<div>
+									<label class="item item-input  item-floating-label formselect" ng-if="dependentName" ng-class="{ 'has-errors' :myForm.dependent.$dirty && myForm.dependent.$invalid  ,'no-errors' :myForm.dependent.$valid  }">
+										<span class="input-label ItemlineHead1">Enter Dependent's Name</span>
+										<input type="text"  id="forminput" name="dependent" ng-model="newclaimvalues.dependent"  ng-pattern="/^[a-zA-Z\w -]*$/" placeholder=" Enter Dependent's Name"  required>
+									</label> 
+									<div class="row">
+										<span style="color:red" ng-show="myForm.dependent.$dirty && myForm.dependent.$invalid">
+											<span ng-show="myForm.dependent.$error.required"> Dependent's Name is required.</span>
+											<p style="color:red" ng-show="myForm.dependent.$error.pattern"> Please Enter Text.</p>
+										</span>
+									</div>
+
+									<label class="item item-input  item-floating-label formselect"  ng-if="taxcontent" ng-class="{ 'has-errors' :myForm.taxid.$dirty && myForm.taxid.$invalid  ,'no-errors' :myForm.taxid.$valid  }">
+										<span class="input-label ItemlineHead1">Enter Provider's Tax ID</span>
+										<input type="text"  id="forminput" name="taxid" ng-model="newclaimvalues.taxid" ng-pattern="/^[a-zA-Z0-9\w -]*$/" placeholder="Enter Provider's Tax ID"  required>
+									</label> 
+									<div class="row">
+										<span style="color:red" ng-show="myForm.taxid.$dirty && myForm.taxid.$invalid">
+											<span ng-show="myForm.taxid.$error.required"> Provider's Tax ID is required.</span>
+											<p style="color:red" ng-show="myForm.taxid.$error.pattern"> Please Enter Text.</p>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col text-center">
+									<button class="button button-calm button-small  formButton1" type="submit" ng-click="upload();" ><i side="left"  class="icon-left ion-android-upload" ></i><span class="icon-upload">Upload</span></button>
+								</div> 
+							</div> 
+
+							<div ng-repeat="image in imgSrc">
+								<div class="row" >
+									<div class="col text-center">
+										<img ng-src="{{image}}" id="receipt"  ng-click="deleteimg($index)"/>
+										<input type="hidden" name="imgValue" ng-value="imgSrc" ng-model="newclaimvalues.imgValue">
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col text-center">
+									<button class="button button-calm button-small formButton1" ng-disabled="myForm.$invalid" type="submit" ng-click="newclaimsubmit();myForm.$setPristine()">SUBMIT</button>
+								</div> 
+							</div>    
+						</div>
+					</div>
+						<!--the below code used for Scrolling -->
+					<div style="height:100px;"></div>
+				</form>
+		</ion-content>
+</ion-view>

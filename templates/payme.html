@@ -1,0 +1,108 @@
+<ion-header-bar id="headerborder" class="headerborder" >
+	<div class="home-head2" ng-click="goback();reset();">
+		<i  class="ion ion-arrow-left-c back-icon"></i>
+    </div>
+    <div class="home-head2 ">
+		<p style="margin-top:3px;margin-left:20px">Pay Me</p>
+	</div>
+</ion-header-bar>
+<style>
+	input[type=text]:focus {
+		box-shadow: -8px 10px 0px -7px #5FBA7D, 8px 10px 0px -7px #5FBA7D;
+	}
+</style>
+<ion-view class="bgnew">
+	<ion-content>
+		<form name="myForm">
+			<div class=" hide row">
+				<div class="col col-center">
+					<h3 class="ion ion-arrow-left-a" onclick="window.history.back();"> Pay Me</h3> 
+				</div>
+			</div> 
+			<div class="row responsive-sm">
+				<div class="col col-75 center">
+					<div class="card" >
+						<div class="item item-avatar">
+							<img src="img/item/account_balance.png">
+							<div class="ItemlineHead cardContent">Available Balance</div>
+							<div class="ItemlineValueText cardContent">{{Availablebalance | currency}}</div>
+						</div>
+					</div>
+					
+					<div class="list">
+						<p class=" ItemlineHead1 Select-Float" ng-show="floatlabel">Select Bank Account</p>
+						<label class="item item-input item-select formselect bgnew" ng-class="{ 'has-errors' :myForm.selectAccount.$dirty && myForm.selectAccount.$invalid,'no-errors' :myForm.selectAccount.$valid }">
+							<div class="input-label ">
+								select 
+							</div>
+							<select class="bgnew" name="selectAccount" ng-model="paymeValues.selectAccount" ng-options="pay.DISPLAY_NAME for pay in bank_details" ng-change="SelectFloat()" required>
+								<option selected disabled value=""> Select Bank Account</option>
+							</select>
+						</label>
+						<div class="row">
+							<span style="color:red" ng-show="myForm.selectAccount.$dirty && myForm.selectAccount.$invalid">
+								<span ng-show="myForm.selectAccount.$error.required"> Bank Account is required.</span>
+							</span>
+						</div>
+						
+						<label class="item item-input  item-floating-label formselect " ng-class="{ 'has-errors' :myForm.amount.$dirty && myForm.amount.$invalid ,'no-errors' :myForm.amount.$valid   }">
+							<span class="input-label ItemlineHead1">Enter Amount</span>
+							<input type="number"  class="input-box1 input-boxfocus1 formselect" id="forminput" name="amount" ng-model="paymeValues.amount" placeholder="Enter Amount"  required>
+						</label> 
+						<div class="row" >
+							<span style="color:red" ng-if="myForm.amount.$dirty && myForm.amount.$invalid">
+								<span style="color:Red" ng-show=" myForm.amount.$error.required"> Amount is required.</span>
+								<p style="color:Red" ng-show=" myForm.amount.$error.number">Please Enter Number's Only.</p>
+							</span>
+						</div>
+
+						<label class="item item-input  item-floating-label formselect" ng-class="{ 'has-errors' :myForm.transaction.$dirty && myForm.transaction.$invalid  ,'no-errors' :myForm.transaction.$valid  }">
+							<span class="input-label ItemlineHead1">Enter Transaction</span>
+							<input type="text" ng-focus="getTransDate()"  name="transaction"  ng-model="paymeValues.TransDate" id="forminput"  placeholder="Enter Transaction Date" class="bgnew" ng-readonly="true" required>
+						</label>
+						<div class="row" >
+							<span style="color:red" ng-show="myForm.transaction.$dirty && myForm.transaction.$invalid ">
+								<span style="color:red" ng-show=" myForm.transaction.$error.required" > Transaction Date is required.</span>
+							</span>
+						</div>
+						
+						<p class="input-label ItemlineHead1 Select-Float" ng-show="floatlabel1">Category</p>
+						<label class="item item-input item-select formselect bgnew" ng-class="{ 'has-errors' :myForm.category.$dirty && myForm.category.$invalid ,'no-errors' :myForm.category.$valid   }">
+							 <span class="input-label">
+								Category
+							 </span>
+							<select class="bgnew" name="category" ng-model="paymeValues.category" ng-options="pay.DESCRIPTION for pay in categories" ng-change="SelectFloat1()" required>
+								<option selected disabled value="">Category</option>
+							</select>
+						</label>
+						<div class="row" ng-show="msghide">
+							<span style="color:red" ng-show="myForm.category.$dirty && myForm.category.$invalid">
+								<span ng-show="myForm.category.$error.required"> Category is required.</span>
+							</span>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col text-center">
+							<button class="button button-calm button-small  formButton1"   ng-click="upload();" type="submit" ><i side="left"  class="icon-left ion-android-upload" ></i><span class="icon-upload">Upload</span></button>
+							<span ng-show="myForm.imgValue.$dirty && myForm.imgValue.$invalid"></span>
+						</div>
+					</div>
+
+					<div class="row" >
+						<div class="col text-center">
+							<img ng-src="{{imgSrc}}" id="receipt" />
+							<input type="hidden" name="imgValue" ng-value="imgSrc" ng-model="paymeValues.imgValue" >
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col text-center">
+							<button class="button button-calm button-small formButton1"  ng-disabled="myForm.$invalid" type="submit" ng-click="payme(); myForm.$setPristine()">SUBMIT</button>
+						</div>
+					</div>		
+				</div>		
+			</div>
+		</form>
+	</ion-content>
+</ion-view>

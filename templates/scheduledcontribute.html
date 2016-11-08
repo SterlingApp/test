@@ -1,0 +1,54 @@
+<ion-header-bar id="headerborder" class="headerborder" >
+    <div class="home-head2 " ng-click="goback();">
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+    </div>
+    <div class="home-head2 ">
+		<p class="headertitle">Scheduled Contributions</p>
+	</div> 
+</ion-header-bar>
+
+<ion-view>
+    <head>
+		<style>
+			.col11{
+				background:#aebcd7;
+				padding: 10px;
+				text-align: center;
+			}
+			.col12{
+				background:#fdf2e9;
+				padding: 10px;
+				text-align: center;
+				
+			}
+			.p{
+				color:#5dade2;
+			}
+		</style>
+    </head>
+    <ion-content class="bgnew" drag-content="false">
+		<div class="card" ng-repeat="data in schedule_list">
+				<div class="item ItemLinehr">
+					<span class="ItemHeadLine">{{data.TXN_DATE}}</span>
+				</div>
+				<div class="item item-avatar itemleft ItemLinehr">
+					<img src="img/item/Total-contribution.png" class="item-Image">
+					<div class="ItemlineHead cardContent">Transaction Id</div>
+					<div class="ItemlineValueText cardContent">{{data.TXN_ID}}</div>
+				</div>
+				
+				<div class="item item-avatar itemleft">
+					<img src="img/item/account_balance.png" class="item-Image">
+					<div class="ItemlineHead cardContent">Amount</div>
+					<div class="ItemlineValueText cardContent">{{data.AMOUNT | currency}}</div>
+				</div>
+				
+				<div class="item item-avatar itemleft">
+					<img src="img/item/Total-disburesment.png" class="item-Image">
+					<div class="ItemlineHead cardContent">Status</div>
+					<div class="ItemlineValueText cardContent">{{data.STATUS}}</div>
+				</div>
+		</div>
+		<div style="height: 10px;"></div>
+    </ion-content>
+</ion-view>

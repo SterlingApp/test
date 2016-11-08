@@ -1,0 +1,47 @@
+<ion-header-bar id="headerborder" class="headerborder">
+	<div class="home-head2 " ng-click="goback()">
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+      </div>
+    <div class="home-head2 ">
+		<p class="headertitle">Activity Statement</p>
+	</div> 
+</ion-header-bar>
+
+<style>
+	div.card{
+		box-shadow: none !important;
+	}
+</style>
+
+<ion-view>
+	<ion-content class="bgnew">
+		<div class="row responsive-sm">
+			<div class="col col-90 center ">
+				<div class="list bgnew">  
+					<div class="item item-body">
+						<div class="list" >
+							<label class="item item-input item-floating-label formselect">
+							<span class="input-label ItemlineHead1">Enter From Date</span>
+							<input type="text" ng-focus="getStartDate()" ng-model="activity.startDate" ng-readonly="true" class="input-box input-boxfocus formselect" placeholder="Enter Start Date  (MM/DD/YYYY)*" style="margin-left:-1px">
+							</label>
+						</div>
+
+						<div class="list" >
+							<label class="item item-input item-floating-label formselect">
+							<span class="input-label ItemlineHead1">Enter To Date </span>
+							<input type="text"  ng-focus="getEndDate()" ng-model="activity.EndtDate" ng-readonly="true"class="input-box input-boxfocus formselect" placeholder="Enter End Date  (MM/DD/YYYY)*" style="margin-left:-1px">
+							</label>
+						</div>
+
+						<div class="row">
+							<div class="col text-center">
+								<button class="button button-small runstatement-button" type="submit"   ng-click="pick()">Run Statement</button>
+							</div> 
+						</div> 
+					</div>
+				</div>
+
+			</div>
+		</div>    
+	</ion-content>
+</ion-view>

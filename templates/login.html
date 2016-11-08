@@ -1,0 +1,54 @@
+<style>
+.home .scroll-content {
+  display: table !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin-top: -50px; /* the height of the centered content */
+  text-align: center;
+}
+.home .scroll {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.spinner svg {
+  width: 28px;
+  height: 28px;
+  stroke: #444;
+  fill: #444;
+}
+
+.popup-buttons .button {
+    background-color: #29B8E5;
+    font-size: 20px;
+
+}
+</style>
+<ion-view class="home" style="background-color:#E5E5E5;">
+  <ion-content>
+	<div>
+		<div class="image">
+			<img src="img/new/logo1.png" style="width:200px">
+		</div>
+		<div style="padding:10px;">
+			<div class="list list-inset" style="border-radius:10px;">
+				<label class="item item-input" style="background-color:#F3F3F3;border-radius:10px">
+					<i class="icon ion-ios-person-outline"></i>
+					<input type="text" placeholder="Username" ng-model="loginData.username" style="padding:10px; ">
+				</label>
+			</div>
+			<div class="list list-inset" style="border-radius:10px">
+				<label class="item item-input"  style="background-color:#F3F3F3;border-radius:10px">
+					<i class="icon ion-ios-unlocked-outline"></i>
+				<input type="password" placeholder="Password"  ng-model="loginData.password" style="padding:10px;">
+			  </label>
+			</div>
+			<div class="row">
+				<div class="col col-95">
+					<button class=" button-block" type="submit" ng-click="logIn(loginData)"  style="background-color: #547AAC;color:#fff;height:35px;font-size:15px;border-radius:8px">LOGIN</button>
+				</div> 
+			</div>
+		</div>
+	 </div>
+  </ion-content>
+</ion-view>

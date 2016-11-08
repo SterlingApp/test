@@ -1,0 +1,30 @@
+<ion-header-bar id="headerborder" class="headerborder" >
+	<div class="home-head2 " ng-click="goback();">
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+      </div>
+    <div class="home-head2 ">
+		<p class="headertitle">Account Activity</p>
+	</div>
+</ion-header-bar>
+<style>
+    .div{
+      text-align: center;
+      padding: 30px;
+    }
+  </style>
+<ion-view  class="bgnew">
+	<ion-content scroll="false">
+		<div class="div newTop">
+			<a href="#/activityContribution" menu-close >
+			<img src="img/home/Contributions2.svg" style="height: 100px; width: 100px;">
+			<p class="home-head">Contributions</p>
+			</a>
+		</div>
+		<div class="div">
+			<a href="#/disbursement" menu-close >
+			<img src="img/home/Disbursements.svg" style="height: 100px; width: 100px;">
+			<p class="home-head">Disbursements</p>
+			</a>
+		</div>
+	</ion-content>
+</ion-view>

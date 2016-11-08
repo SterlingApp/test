@@ -1,0 +1,68 @@
+<ion-header-bar id="headerborder" class="headerborder">
+	<div class="home-head2 " ng-click="goback();">
+		<i ng-click="goback();" class="ion ion-arrow-left-c back-icon"></i>
+    </div>
+    <div class="home-head2 ">
+		<p class="headertitle">Tax Year</p>
+	</div>
+</ion-header-bar>
+
+<ion-view>
+	<ion-content class="bgnew">
+		<div class="card" ng-repeat="data in tax_statement_list">
+			<div class="item ItemLinehr">
+				<span class="ItemHeadLine">Contributions</span>
+			</div>
+			
+			<div class="item item-avatar itemleft item-text-wrap ItemLinehr">
+				<img src="img/item/Total-contribution.png" class="item-Image1">
+				<div class="ItemlineHead cardContent">Contributions Made in 2015 for {{data.TAX_YEAR}}</div>
+				<div class="ItemlineValueText cardContent">{{data.CY | currency}}</div>
+			</div>
+
+			<div class="item item-avatar item-text-wrap itemleft">
+				<img src="img/item/Total-disburesment.png" class="item-Image1">
+				<div class="ItemlineHead cardContent">Contributions Made in 2015 for {{data.PREV_TAX_YEAR}}</div>
+				<div class="ItemlineValueText cardContent">{{data.PY | currency}}</div>
+			</div>
+		</div>
+		<div class="card" ng-repeat="data in tax_statement_list">
+			<div class="item ItemLinehr item-text-wrap">
+				<span class="ItemHeadLine ">Disbursements / Distributions</span>
+			</div>
+			<div class="item item-avatar itemleft  ItemLinehr item-text-wrap">
+				<img src="img/item/Total-contribution.png" class="item-Image1">
+				<div class="ItemlineHead cardContent ">Disbursements / Distributions </div>
+				<div class="ItemlineValueText cardContent">{{data.DISB | currency}}</div>
+			</div>
+		</div>
+		<div class="card" ng-repeat="data in tax_statement_list">
+			<div class="item  ItemLinehr">
+				<span class="ItemHeadLine">Interest Paid</span>
+			</div>
+			<div class="item item-avatar itemleft  ItemLinehr item-text-wrap">
+				<img src="img/item/Total-contribution.png" class="item-Image1">
+				<div class="ItemlineHead cardContent ">Disbursements / Distributions </div>
+				<div class="ItemlineValueText cardContent">{{data.INT | currency}}</div>
+			</div>
+		</div>
+		<div class="card" >
+			<div class="item ItemLinehr">
+				<span class="ItemHeadLine">Tax Statements</span>
+			</div>
+			<div class="item item-avatar itemleft ItemLinehr">
+				<img src="img/item/Total-contribution.png" class="item-Image">
+				<div class="ItemlineHead cardContent">1.Form 1099-SA</div>
+				<!-- <div class="ItemlineValueText cardContent" ng-click="form10999()">Download</div> -->
+				<div class="ItemlineValueText cardContent" ng-click="form1099()">Download</div>
+				<!-- <embed  ng-src="{{content}}"  style="width:200px;height:200px;"></embed> -->
+			</div>
+			<div class="item item-avatar itemleft ">
+				<img src="img/item/Total-contribution.png" class="item-Image">
+				<div class="ItemlineHead cardContent">2.Form 5498-SA</div>
+				<div class="ItemlineValueText cardContent" ng-click="form5498()">Download</div>
+			</div>				
+		</div>
+    </ion-content>
+	
+</ion-view>

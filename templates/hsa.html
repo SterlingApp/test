@@ -1,0 +1,82 @@
+	
+	<ion-content class="bgnew tab-Content" on-swipe-left="goForward()">
+      
+		<div class="padding" >
+			<div class="list">
+				<a class="item menu-height shadow item-avatar" href="#accounts" >
+					<img src="img/home/us.svg" style="margin-top:32px;">
+					<div class="home-head menu-head">Account Information</div>
+					<div class="row no-padding row-border">
+						<div class="col colvertical">
+							<div class="head-details">Balance</div>
+						</div>
+						<div class="col">
+							<div  class="readMore" style=""> 
+								{{account_type.BALANCE | currency}}
+							</div>		
+						</div>
+					</div>
+				</a>
+				<a class="item menu-height shadow item-avatar menupadding"  href="#makecontribution">
+					<img src="img/home/Contributions2.svg" style="margin-top:32px;">
+					<div class="home-head menu-head"> Make Contribution</div>
+					<div class="row no-padding row-border">
+						<div class="col colvertical">
+						<div class="head-details">Contribution</div>
+						</div>
+						<div class="col">
+							<div class="readMore" style=""> 
+								{{contributions | currency}}
+							</div>		
+						</div>
+					</div>
+				</a>
+				<span class="item  menu-height shadow item-avatar menupadding" >
+					<img src="img/home/Disbursements.svg" style="margin-top:32px;">
+					<a  href="#make"><div class="home-head menu-head" ng-click="gomake()">Make Disbursement</div></a>
+					
+					<div class="row no-padding row-border" >
+						<div class="col colvertical" style="border-left-color:#000">
+							<a href="#payme"><div class="head_detail"  >Pay Me</div></a>
+						</div>
+						<div class="col">
+							<a href="#payprovider"><div class="head_detail" >Pay Provider</div></a>
+							
+						</div>
+						
+					</div>				
+				</span>
+				<span class="item menu-height shadow item-avatar menupadding" >
+					<img src="img/home/Last5contributions.svg" style="margin-top:32px;">
+					<a href="#/activity"ng-click="goactivity()"><div class="home-head menu-head"> Recent Account Activity</div></a>
+					
+					<div class="row no-padding row-border" >
+						<div class="col colvertical" style="border-left-color:#000">
+							<a href="#activityContribution"><div class="head_detail">Contributions</div></a>
+						</div>
+						<div class="col col-text-center">
+							<a href="#disbursement"><div class="head_detail">Disbursements</div></a>
+							
+						</div>
+					</div>		
+				</span>
+				<span class="item menu-height shadow item-avatar menupadding" >
+					<img src="img/home/Activity_statements.svg" style="margin-top:32px;">
+					<a href="#/health"ng-click="gohealth()"><div class="home-head menu-head"> Statements</div></a>
+					
+					<div class="row no-padding row-border  " >
+						<div class="col colvertical responsive-sm" style="border-left-color:#000">
+							<a href="#activitystmnt"><div class="head_detail">Activity</div></a>
+						</div>
+						<div class="col responsive-sm">
+							<a href="#taxyear"><div class="head_detail">Tax </div></a>
+							
+						</div>
+					</div>		
+				</span>
+			</div>
+			
+			<div style="height: 150px;"></div>
+		</div> 
+      
+	</ion-content>
